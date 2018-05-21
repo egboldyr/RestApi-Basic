@@ -9,6 +9,8 @@ import io.swagger.annotations.SwaggerDefinition;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @SwaggerDefinition(
         info = @Info(description = "Sandbox Test REST API", version = "1.0", title = "Sandbox API"),
         produces = {"application/json"},
@@ -20,7 +22,7 @@ public interface SandboxEndpoint {
 
     @ApiOperation(value = "Sandbox GET Test-method")
     @RequestMapping(value = "/testget", method = RequestMethod.GET)
-    GeneralResponse<Void> testGetMethod();
+    GeneralResponse<List<Void>> testGetMethod();
 
     @ApiOperation(value = "Sandbox POST Test-method")
     @RequestMapping(value = "/testpost", method = RequestMethod.POST)
