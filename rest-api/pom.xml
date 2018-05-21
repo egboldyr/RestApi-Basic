@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>rest-api</artifactId>
+    <name>rest-api</name>
+
+    <packaging>jar</packaging>
+
+    <groupId>sandbox.rest.api</groupId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- Spring Properties -->
+        <org.spring.web.ver>4.3.17.RELEASE</org.spring.web.ver>
+        <!-- Swagger Properties -->
+        <io.swagger.ver>1.5.19</io.swagger.ver>
+        <!-- Build API Properties-->
+        <jar.plugin.ver>3.1.0</jar.plugin.ver>
+        <assemblyDir>../assembly/${project.artifactId}-${project.version}</assemblyDir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${io.swagger.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${org.spring.web.ver}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>Delete all files under assembly</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>../assembly</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${jar.plugin.ver}</version>
+                <configuration>
+                    <outputDirectory>${assemblyDir}</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
