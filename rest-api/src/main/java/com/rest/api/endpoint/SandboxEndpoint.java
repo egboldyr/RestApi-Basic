@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Info;
 import io.swagger.annotations.SwaggerDefinition;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,15 +25,15 @@ import java.util.List;
 public interface SandboxEndpoint {
 
     @ApiOperation(value = "Sandbox GET Test-method (All)")
-    @RequestMapping(value = "/getall", method = RequestMethod.GET)
+    @RequestMapping(value = "/getall", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     GeneralResponse<List<SandboxDTO>> testGetMethod();
 
     @ApiOperation(value = "Sandbox GET Test-method (Single)")
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(value = "/get", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
     GeneralResponse<SandboxDTO> testGetMethod(@RequestParam("sandboxId") Long id);
 
     @ApiOperation(value = "Sandbox POST Test-method")
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.POST)
     GeneralResponse<Long> testPostMethod(GeneralRequest<CreateSandboxParameters> request);
 
 }
