@@ -26,7 +26,7 @@ public interface SandboxEndpoint {
 
     @ApiOperation(value = "Sandbox GET Test-method (All)")
     @RequestMapping(value = "/getall", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)
-    GeneralResponse<List<SandboxDTO>> testGetMethod();
+    GeneralResponse<List<SandboxDTO>> testGetAllMethod();
 
     @ApiOperation(value = "Sandbox GET Test-method (Single)")
     @RequestMapping(value = "/get", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.GET)

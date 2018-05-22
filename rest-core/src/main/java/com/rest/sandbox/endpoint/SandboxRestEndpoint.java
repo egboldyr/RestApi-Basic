@@ -24,13 +24,13 @@ public class SandboxRestEndpoint implements SandboxEndpoint {
     private SandboxService service;
 
     @Override
-    public GeneralResponse<List<SandboxDTO>> testGetMethod() {
+    public GeneralResponse<List<SandboxDTO>> testGetAllMethod() {
         return new GeneralResponse<List<SandboxDTO>>(ResponseCode.OK, service.findAll());
     }
 
     @Override
     public GeneralResponse<SandboxDTO> testGetMethod(Long id) {
-        return new GeneralResponse<>(ResponseCode.OK, service.findById(id));
+        return new GeneralResponse<SandboxDTO>(ResponseCode.OK, service.findById(id));
     }
 
     @Override
