@@ -22,6 +22,7 @@ public class SandboxEntity implements Serializable {
     @Column
     private Integer count;
 
+    public SandboxEntity() {}
     public SandboxEntity(String title, Integer count) {
         this.title = title;
         this.count = count;

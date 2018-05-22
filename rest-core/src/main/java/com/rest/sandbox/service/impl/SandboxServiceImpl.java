@@ -26,10 +26,9 @@ public class SandboxServiceImpl implements SandboxService {
 
     @Override
     public Long create(CreateSandboxParameters parameters) {
-        SandboxEntity sandbox = new SandboxEntity(
-                parameters.getTitle(),
-                parameters.getCount()
-        );
+        SandboxEntity sandbox = new SandboxEntity();
+        sandbox.setTitle(parameters.getTitle());
+        sandbox.setCount(parameters.getCount());
         return repository.saveAndFlush(sandbox).getId();
     }
 
