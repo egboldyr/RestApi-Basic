@@ -9,6 +9,7 @@ public class GeneralResponse<T> {
 
     private T payload;
 
+    public GeneralResponse() {}
     public GeneralResponse(String code, T payload) {
         this.code = code;
         this.payload = payload;
@@ -19,5 +20,13 @@ public class GeneralResponse<T> {
     }
     public T getPayload() {
         return payload;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("GeneralResponse{");
+        sb.append("code='").append(code).append("\'");
+        sb.append(", payload='").append(payload).append("\'");
+        return sb.append("}").toString();
     }
 }
