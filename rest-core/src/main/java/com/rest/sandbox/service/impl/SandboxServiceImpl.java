@@ -2,6 +2,7 @@ package com.rest.sandbox.service.impl;
 
 import com.rest.api.dto.SandboxDTO;
 import com.rest.api.request.sandbox.CreateSandboxParameters;
+import com.rest.api.request.sandbox.UpdateSandboxParamters;
 import com.rest.sandbox.dao.SandboxRepository;
 import com.rest.sandbox.domain.SandboxEntity;
 import com.rest.sandbox.service.SandboxService;
@@ -35,6 +36,22 @@ public class SandboxServiceImpl implements SandboxService {
     @Override
     public SandboxDTO findById(Long id) {
         return mapper.sandboxDomainToSandboxDto(repository.findOne(id));
+    }
+
+    @Override
+    public void update(UpdateSandboxParamters paramters) {
+        SandboxEntity sandbox = repository.findOne(paramters.getId());
+        if (sandbox == null) {
+            throw new IllegalStateException("Entitty with ID = " + paramters.getId() + " not found.");
+        }
+        sandbox.setTitle(paramters.getTitle());
+        sandbox.setCount(paramters.getCount());
+        repository.saveAndFlush(sandbox);
+    }
+
+    @Override
+    public void delete(Long id) {
+        repository.delete(id);
     }
 
     @Override

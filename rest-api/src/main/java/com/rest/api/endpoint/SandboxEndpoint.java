@@ -2,6 +2,7 @@ package com.rest.api.endpoint;
 
 import com.rest.api.request.GeneralRequest;
 import com.rest.api.request.sandbox.CreateSandboxParameters;
+import com.rest.api.request.sandbox.UpdateSandboxParamters;
 import com.rest.api.response.GeneralResponse;
 import com.rest.api.dto.SandboxDTO;
 import io.swagger.annotations.Api;
@@ -35,5 +36,13 @@ public interface SandboxEndpoint {
     @ApiOperation(value = "Sandbox POST Test-method")
     @RequestMapping(value = "/create", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.POST)
     GeneralResponse<Long> testPostMethod(GeneralRequest<CreateSandboxParameters> request);
+
+    @ApiOperation(value = "Sandbox PUT Test-method")
+    @RequestMapping(value = "/update", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.PUT)
+    GeneralResponse<Void> testPutMethod(GeneralRequest<UpdateSandboxParamters> request);
+
+    @ApiOperation(value = "Sandbox DELETE Test-method")
+    @RequestMapping(value = "/delete", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, method = RequestMethod.DELETE)
+    GeneralResponse<Void> testDeleteMethod(@RequestParam("samdboxId") Long id);
 
 }

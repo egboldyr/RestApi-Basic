@@ -3,6 +3,7 @@ package com.rest.sandbox.endpoint;
 import com.rest.api.endpoint.SandboxEndpoint;
 import com.rest.api.request.GeneralRequest;
 import com.rest.api.request.sandbox.CreateSandboxParameters;
+import com.rest.api.request.sandbox.UpdateSandboxParamters;
 import com.rest.api.response.GeneralResponse;
 import com.rest.api.dto.SandboxDTO;
 import com.rest.api.response.ResponseCode;
@@ -36,5 +37,17 @@ public class SandboxRestEndpoint implements SandboxEndpoint {
     @Override
     public GeneralResponse<Long> testPostMethod(@RequestBody GeneralRequest<CreateSandboxParameters> request) {
         return new GeneralResponse<Long>(ResponseCode.OK, service.create(request.getParameters()));
+    }
+
+    @Override
+    public GeneralResponse<Void> testPutMethod(GeneralRequest<UpdateSandboxParamters> request) {
+        service.update(request.getParameters());
+        return new GeneralResponse<>(ResponseCode.OK, null);
+    }
+
+    @Override
+    public GeneralResponse<Void> testDeleteMethod(Long id) {
+        service.delete(id);
+        return new GeneralResponse<>(ResponseCode.OK, null);
     }
 }

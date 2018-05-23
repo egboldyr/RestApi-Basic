@@ -2,6 +2,7 @@ package com.rest.sandbox.service;
 
 import com.rest.api.dto.SandboxDTO;
 import com.rest.api.request.sandbox.CreateSandboxParameters;
+import com.rest.api.request.sandbox.UpdateSandboxParamters;
 
 import java.util.List;
 
@@ -14,6 +15,10 @@ public interface SandboxService {
     Long create(CreateSandboxParameters parameters);
 
     SandboxDTO findById(Long id);
+
+    void update(UpdateSandboxParamters paramters);
+
+    void delete(Long id);
 
     List<SandboxDTO> findAll();
 
