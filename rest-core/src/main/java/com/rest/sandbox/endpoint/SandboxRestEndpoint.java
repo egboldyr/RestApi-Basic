@@ -40,7 +40,7 @@ public class SandboxRestEndpoint implements SandboxEndpoint {
     }
 
     @Override
-    public GeneralResponse<Void> testPutMethod(GeneralRequest<UpdateSandboxParamters> request) {
+    public GeneralResponse<Void> testPutMethod(@RequestBody GeneralRequest<UpdateSandboxParamters> request) {
         service.update(request.getParameters());
         return new GeneralResponse<>(ResponseCode.OK, null);
     }
