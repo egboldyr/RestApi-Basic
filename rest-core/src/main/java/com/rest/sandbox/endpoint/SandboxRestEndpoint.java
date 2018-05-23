@@ -42,12 +42,12 @@ public class SandboxRestEndpoint implements SandboxEndpoint {
     @Override
     public GeneralResponse<Void> testPutMethod(@RequestBody GeneralRequest<UpdateSandboxParamters> request) {
         service.update(request.getParameters());
-        return new GeneralResponse<>(ResponseCode.OK, null);
+        return new GeneralResponse<Void>(ResponseCode.OK, null);
     }
 
     @Override
     public GeneralResponse<Void> testDeleteMethod(Long id) {
         service.delete(id);
-        return new GeneralResponse<>(ResponseCode.OK, null);
+        return new GeneralResponse<Void>(ResponseCode.OK, null);
     }
 }
